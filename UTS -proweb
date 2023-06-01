@@ -1,0 +1,176 @@
+<?php
+// Connect to the MySQL database
+$host = 'localhost';
+$db = 'siakad';
+$user = 'root';
+$password = '';
+
+$conn = new mysqli($host, $user, $password, $db);
+
+// Check the connection
+    if ($conn->connect_error) {
+      die("Connection failed: " . $conn->connect_error);
+    }
+    
+
+// CREATE operation
+    function creatematakuliah ($ID, $Matakuliah, $kodematakuliah, $Des) {
+         global $conn;
+
+             $sql = "INSERT INTO users (ID, Namamatakuliah, kode matakuliah, deskripsi) VALUES ('$id', '$matakuliah','$kodematakuliah','$des')";
+
+    }
+
+
+// READ operation
+function readRecords() {
+    global $conn;
+
+    $sql = "SELECT * FROM users";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo "ID: " . $row["id"] . "<br>";
+            echo "matakuliah: " . $row["matakuliah"] . "<br>";
+            echo "kode matakuliah: " . $row["kode matakuliah"] . "<br>";
+            echo "Deskripsi       : "; $row["des"] . "<br><br>";
+        }
+    } else {
+        echo "No records found.";
+    }
+}
+
+// Fungsi untuk mengubah data matakuliah
+function ubahMatakuliah($ID, $Matakuliah, $kodematakuliah, $Des)
+{
+    global $conn;
+
+    $sql = "UPDATE matakuliah SET kode='$kode', matakuliah='$matakuliah', Dekripi=$Des WHERE id=$ID";
+
+    if (mysqli_query($conn, $sql)) {
+        echo "Data matakuliah berhasil diubah.";
+    } else {
+        echo "Gagal mengubah data matakuliah: " . mysqli_error($conn);
+    }
+}
+
+// Fungsi untuk menghapus data matakuliah
+function hapusMatakuliah($ID)
+{
+    global $conn;
+
+    $sql = "DELETE FROM matakuliah WHERE id=$ID";
+
+    if (mysqli_query($conn, $sql)) {
+        echo "Data matakuliah berhasil dihapus.";
+    } else {
+        echo "Gagal menghapus data matakuliah: " . mysqli_error($conn);
+    }
+}
+// CREATE operation
+function createmahasiswa($ID, $Nama, $Nim, $Programstudi) {
+    global $conn;
+
+        $sql = "INSERT INTO users (ID, Nama mahasiswa, NIM, Program studi) VALUES ('$id', '$Nama','$NIM','$Programstudi')";
+
+}
+
+// READ operation
+function readRecordsmahasiswa() {
+    global $conn;
+
+    $sql = "SELECT * FROM users";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo "ID: " . $row["ID"] . "<br>";
+            echo "Nama Mahasiswa: " . $row["mahasiswa"] . "<br>";
+            echo "NIM: " . $row["NIM"] . "<br>";
+            echo "Deskripsi       : "; $row["programstudi"] . "<br><br>";
+        }
+    } else {
+        echo "No records found.";
+    }
+}
+
+// Fungsi untuk mengubah data mahasiswa
+function ubahMahasiswa($ID, $Nama, $Nim, $Programtudi){    global $conn;
+
+    $sql = "UPDATE mahasiswa SET kode='$ID', matakuliah='$matakuliah', Program studi=$Programtudi WHERE id=$ID";
+
+    if (mysqli_query($conn, $sql)) {
+        echo "Data matakuliah berhasil diubah.";
+    } else {
+        echo "Gagal mengubah data matakuliah: " . mysqli_error($conn);
+    }
+}
+
+// Fungsi untuk menghapus data matakuliah
+function hapusMahasiswa ($ID)
+{
+    global $conn;
+
+    $sql = "DELETE FROM mahasiswa WHERE id=$ID";
+
+    if (mysqli_query($conn, $sql)) {
+        echo "Data matakuliah berhasil dihapus.";
+    } else {
+        echo "Gagal menghapus data matakuliah: " . mysqli_error($conn);
+    }
+}
+
+// CREATE operation
+function createdosen ($ID, $Nama, $NIDN, $Jenjangpendidikan) {
+    global $conn;
+
+        $sql = "INSERT INTO users (ID, Nama, NIDN, Jenjang Pendidikan) VALUES ('$id', '$Nama','$NIDN','$jenjangpendidikan')";
+
+}
+
+// READ operation
+function readRecordsdosen() {
+    global $conn;
+
+    $sql = "SELECT * FROM users";
+    $result = $conn->query($sql);
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            echo "ID: " . $row["ID"] . "<br>";
+            echo "Dosen: " . $row["Dosen"] . "<br>";
+            echo "NIDN: " . $row["NIDN"] . "<br>";
+            echo "Jenjang Pendidikan      : "; $row["JenjangPendidikan"] . "<br><br>";
+        }
+    } else {
+        echo "No records found.";
+    }
+}
+
+// Fungsi untuk mengubah data Dosen
+function ubahDosen($ID, $Nama, $NIND, $Jenjangpendidikan)
+{    global $conn;
+
+    $sql = "UPDATE Dosen SET ID ='$ID',Nama='$Nama', NIDN ='$NIDN', Jenjangp=$Jenjangpendidikan WHERE id=$ID";
+
+    if (mysqli_query($conn, $sql)) {
+        echo "Data Dosen berhasil diubah.";
+    } else {
+        echo "Gagal mengubah data Dosen: " . mysqli_error($conn);
+    }
+}
+
+// Fungsi untuk menghapus data Dosen 
+function hapusDosen ($ID)
+{
+    global $conn;
+
+    $sql = "DELETE FROM Dosen WHERE id=$ID";
+
+    if (mysqli_query($conn, $sql)) {
+        echo "Data Dosen berhasil dihapus.";
+    } else {
+        echo "Gagal menghapus data Dosen: " . mysqli_error($conn);
+    }
+}
+
